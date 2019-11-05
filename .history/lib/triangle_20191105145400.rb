@@ -1,23 +1,18 @@
-require 'pry'
 class Triangle
 
   class TriangleError < StandardError
-    puts "Not a legal triangle."
   end
   attr_accessor :side_a, :side_b, :side_c
+  @@all = []
   def initialize(one, two, three)
-    @sides = []
-
     @one = one 
     @two = two
     @three = three
-    @sides << self
+    @@all << self
+
   end
 
   def kind
-    if (@one + @two <= @three || @one + @three <= @two || @two + @three <= @one)
-      raise TriangleError
-    end
     case
     when (@one == @two && @two == @three)
       :equilateral
@@ -25,6 +20,8 @@ class Triangle
       :isosceles
     when @one != @two && @two != @three && @three != @one
       :scalene
+    else
+      raise TriangleError
     end
   end
 end

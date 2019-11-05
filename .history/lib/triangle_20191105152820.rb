@@ -2,7 +2,6 @@ require 'pry'
 class Triangle
 
   class TriangleError < StandardError
-    puts "Not a legal triangle."
   end
   attr_accessor :side_a, :side_b, :side_c
   def initialize(one, two, three)
@@ -28,3 +27,13 @@ class Triangle
     end
   end
 end
+
+=begin
+
+if ((@one + @two) < @three || (@three + @one) > @two)
+      raise TriangleError
+    elsif @one <= 0 || @two <= 0 || @three <= 0
+      raise TriangleError
+    end
+
+=end
