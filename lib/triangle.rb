@@ -17,10 +17,9 @@ class Triangle
 	end
 
 	def valid?
-		sides = [x,y,z]
-		side_totals = [(x+y>z), (x+z>y), (y+z>x)]
-		raise TriangleError if sides.any? { |int| int <= 0 }
-		raise TriangleError if side_totals.any? { |x| x == false }
+		sides = [ x, y, z ]
+		side_totals = [ (x + y > z), (x + z > y), (y + z > x) ]
+		raise TriangleError if sides.any? { |int| int <= 0 } || side_totals.any? { |x| x == false }
  	end
 
 	class TriangleError < StandardError
